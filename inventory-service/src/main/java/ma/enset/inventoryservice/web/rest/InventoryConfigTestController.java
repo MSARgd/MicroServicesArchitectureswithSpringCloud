@@ -2,20 +2,17 @@ package ma.enset.inventoryservice.web.rest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Map;
-
 @RestController
 public class InventoryConfigTestController {
     @Value("${global.params.p1}")
     private String p1;
     @Value("${global.params.p2}")
     private String p2;
-    @Value("${customer.params.x}")
+    @Value("${inventory.params.x}")
     private String x;
-    @Value("${customer.params.y}")
+    @Value("${inventory.params.y}")
     private String y;
-
     @GetMapping("/params")
     public Map<String,String> params(){
         return Map.of(
@@ -25,6 +22,4 @@ public class InventoryConfigTestController {
                     "y",y
         );
     }
-
-
 }
