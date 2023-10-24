@@ -10,4 +10,12 @@ public class CustomerHelper {
             setter.accept(value);
         }
     }
+
+    public <T> void updateIfNotNullOrPreserve(Consumer<T> setter, T value, T existingValue) {
+        if (value != null) {
+            setter.accept(value);
+        } else if (existingValue != null) {
+            setter.accept(existingValue);
+        }
+    }
 }

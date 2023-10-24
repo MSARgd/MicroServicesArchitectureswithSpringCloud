@@ -8,12 +8,13 @@ import ma.enset.customerservice.repository.CustomerRepository;
 import org.apache.catalina.LifecycleState;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.function.Consumer;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/products")
+@RequestMapping("/api")
 public class CustomerRestController {
     private CustomerRepository customerRepository;
     private CustomerHelper customerHelper; //should be a component
@@ -31,13 +32,24 @@ public class CustomerRestController {
     private Customer saveCustomer(@RequestBody Customer customer){
         return customerRepository.save(customer);
     }
+
     @PutMapping("/customers/{id}")
-    private Customer updateCustomer(@RequestBody Customer customer,@PathVariable long id){
+    private Customer updateCustomer(@RequestBody Customer updatedCustomer, @PathVariable long id) {
+        System.out.println("llllllllllllllllllll");
         return customerRepository.findById(id)
-                .map(c -> {
-                    customerHelper.updateIfNotNull(c::setName, customer.getName());
-                    customerHelper.updateIfNotNull(c::setEmail,customer.getEmail());
-                    return customerRepository.save(c);
-                }).orElseThrow(() -> new IllegalArgumentException("Invalide Id"));
+                .map(existingCustomer -> {
+                    // Check each field and update it only if it's not null in the request.
+                    if (updatedCustomer.getName() != null) {
+                        existingCustomer.setName(updatedCustomer.getName());
+                    }
+                    if (updatedCustomer.getEmail() != null) {
+                        existingCustomer.setEmail(updatedCustomer.getEmail());
+                    }
+                    // Add more fields as needed.
+
+                    return customerRepository.save(existingCustomer);
+                }).orElseThrow(() -> new IllegalArgumentException("Invalid Id"));
     }
+
+
 }
