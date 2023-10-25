@@ -1,5 +1,6 @@
 package ma.enset.orderservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import ma.enset.orderservice.entity.enums.OrderSatus;
@@ -19,6 +20,7 @@ public class Order {
     private OrderSatus statue;
     private Long customerId;
     @OneToMany(mappedBy = "order")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<ProductItem> productItems;
     @Transient
     private Customer customer;

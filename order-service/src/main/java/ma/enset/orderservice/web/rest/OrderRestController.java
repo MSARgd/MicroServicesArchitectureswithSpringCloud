@@ -3,6 +3,7 @@ package ma.enset.orderservice.web.rest;
 import lombok.AllArgsConstructor;
 import ma.enset.orderservice.entity.Order;
 import ma.enset.orderservice.model.Customer;
+import ma.enset.orderservice.model.Product;
 import ma.enset.orderservice.repository.OrderRepository;
 import ma.enset.orderservice.repository.ProductItemRepository;
 import ma.enset.orderservice.service.CustomerOpenFeingClientService;
@@ -18,11 +19,17 @@ public class OrderRestController {
     private ProductItemRepository productItemRepository;
     private CustomerOpenFeingClientService customerOpenFeingClientService;
     private ProductOpenFeingClientService productOpenFeingClientService;
-    @GetMapping("orders/{id}")
+    @GetMapping("fullOrder/{id}")
     private Order orderById(@PathVariable("id") long id){
         Order order = orderRepository.findById(id).get();
         Customer customer = customerOpenFeingClientService.CustomerById(order.getCustomerId());
         order.setCustomer(customer);
+
+        order.getProductItems().forEach(productItem -> {
+            Product product = productOpenFeingClientService.productById(productItem.getId());
+            productItem.setProduct(product);
+        });
+
 
         return order;
 

@@ -1,5 +1,6 @@
 package ma.enset.orderservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class ProductItem {
     private double discount;
     @ManyToOne
     @JoinColumn(name = "Order_Id")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Order order;
     @Transient
     private Product product;
