@@ -6,7 +6,7 @@
 4. Gatway Service
 5. Consul Service
 6. Config Service
-7. Logging Feign clients (monitor and diagnose the interactions between their application)
+7. Logging Feign clients (monitor and diagnose the interactions between microservices )
 8. Front-end Service (angular)
 
 ## Screenshots
