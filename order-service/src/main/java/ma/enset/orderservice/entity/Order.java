@@ -19,11 +19,12 @@ public class Order {
     private Date createdAt;
     private OrderSatus statue;
     private Long customerId;
+    @Transient
+    private Customer customer;
     @OneToMany(mappedBy = "order")
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private List<ProductItem> productItems;
-    @Transient
-    private Customer customer;
+
 
 
 
