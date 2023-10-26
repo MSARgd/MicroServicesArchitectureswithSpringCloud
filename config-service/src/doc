@@ -1,0 +1,17 @@
+@RestController
+public class VaultConfigRestController {
+
+    private final VaultOperations vaultOperations;
+
+    public VaultConfigRestController(VaultOperations vaultOperations) {
+        this.vaultOperations = vaultOperations;
+    }
+
+    @GetMapping("/myConfig1")
+    public Map<String, Object> myConfig1() {
+        String username = (String) vaultOperations.read("secret/billing-service").getData().get("user.name");
+        String token = (String) vaultOperations.read("secret/billing-service").getData().get("user.token");
+
+        return Map.of("name", username, "token", token);
+    }
+}
