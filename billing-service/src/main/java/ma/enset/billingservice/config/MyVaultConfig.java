@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 public class MyVaultConfig {
     private String username;
     private String password;
+    private String token_github;
 }

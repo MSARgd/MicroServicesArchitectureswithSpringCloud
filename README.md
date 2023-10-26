@@ -18,3 +18,13 @@
 ![Image](screenes/4.png)
 
 ### that means all microservices work 100% fine because they retrieve product information from the inventory and customer information from the customer-service
+
+![Image](screenes/5.png)
+![Image](screenes/6.png)
+![Image](screenes/7.png)
+![Image](screenes/8.png)
+![Image](screenes/9.png)
+![Image](screenes/10.png)
+![Image](screenes/11.png)
+![Image](screenes/12.png)
+![Image](screenes/13.png)
