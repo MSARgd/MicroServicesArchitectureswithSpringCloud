@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Customer Orders</h2>
+
+  <ng-container *ngIf="orders && orders.length > 0">
+    <div class="row">
+      <div class="col-md-12" *ngFor="let order of orders">
+        <div class="card mb-4">
+          <div class="card-body d-flex justify-content-between">
+            <div>
+              <h5 class="card-title">Order ID: {{ order.id }}</h5>
+              <p class="card-text">Created At: {{ order.createdAt }}</p>
+
+              <p class="card-text" [ngClass]="getStatusClass(order.statue)">Status: {{ order.statue }}</p>
+            </div>
+            <div class="align-self-end">
+              <button class="btn btn-primary btn-sm" (click)="showOrderDetails(order)">
+                {{ orderDetailsVisible ? 'Hide' : 'Show Details' }}
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Order Details Section -->
+          <div *ngIf="order.showDetails">
+            <h3>Product Items:</h3>
+            <table class="table table-bordered">
+              <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Discount</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let product of order.productItems">
+                <td>{{ product.name }}</td>
+                <td>
+                  <span class="price">{{ product.price  }}</span>
+                </td>
+
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.discount | percent: '2.2-2' }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- End Order Details Section -->
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+
+

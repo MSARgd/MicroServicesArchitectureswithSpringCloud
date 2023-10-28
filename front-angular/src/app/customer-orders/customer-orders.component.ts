@@ -4,12 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-order-details',
-  templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css']
+  templateUrl: './customer-orders.component.html',
+  styleUrls: ['./customer-orders.component.css']
 })
-export class OrderDetailsComponent implements OnInit {
+export class CustomerOrdersComponent implements OnInit {
   orders: any; // Store the order data
   customerId: number;
+  orderDetailsVisible: boolean = false;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.customerId = route.snapshot.params["customerId"];
@@ -35,5 +36,13 @@ export class OrderDetailsComponent implements OnInit {
       default:
         return '';
     }
+  }
+
+
+
+
+  showOrderDetails(order : any) {
+    order.showDetails = !order.showDetails;
+    this.orderDetailsVisible = order.showDetails;
   }
 }

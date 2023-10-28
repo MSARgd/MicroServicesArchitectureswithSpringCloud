@@ -1,0 +1,26 @@
+
+.delivered {
+  color: green;
+}
+
+.pending {
+  color: orange;
+}
+
+registered {
+  color: blue;
+}
+
+canceled {
+  color: red;
+}
+
+.price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price::after {
+  content: 'MRO'; /* The currency symbol */
+  margin-left: 0px; /* Adjust the spacing as needed */
+}

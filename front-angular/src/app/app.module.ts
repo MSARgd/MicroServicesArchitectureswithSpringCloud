@@ -8,7 +8,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { CustomerComponent } from './customer/customer.component';
 import { OrderComponent } from './order/order.component';
 import {NgxPaginationModule} from "ngx-pagination";
-import { OrderDetailsComponent } from './order-details/order-details.component';
+import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
     ProductsComponent,
     CustomerComponent,
     OrderComponent,
-    OrderDetailsComponent
+    CustomerOrdersComponent
   ],
   imports: [
     BrowserModule,
