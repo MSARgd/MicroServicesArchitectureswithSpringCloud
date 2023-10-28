@@ -1,0 +1,29 @@
+<div class="container">
+  <h3>List of Orders</h3>
+  <table class="table table-striped" *ngIf="orders">
+    <thead>
+    <tr>
+      <th>#ID</th>
+      <th>customerId</th>
+      <th>Statue</th>
+      <th>createdAt</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+<!--    [{"id":1,"createdAt":"2023-10-27","statue":"DELIVRED","customerId":1-->
+
+    <tr *ngFor="let o of orders">
+      <td>{{o.id}}</td>
+      <td>{{o.customerId}}</td>
+      <td>{{o.statue}}</td>
+      <td>{{o.createdAt}}</td>
+      <td> <button class="btn btn-success" (click)="detailsOfOrder(o)">Details</button>   </td>
+<!--      <td> <button class="btn btn-success" (click)="getOrders(c)">Orders</button>   </td>-->
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+

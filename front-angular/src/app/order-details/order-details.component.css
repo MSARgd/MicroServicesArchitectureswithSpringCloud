@@ -1,0 +1,16 @@
+
+.delivered {
+  color: green;
+}
+
+.pending {
+  color: orange;
+}
+
+registered {
+  color: blue;
+}
+
+canceled {
+  color: red;
+}

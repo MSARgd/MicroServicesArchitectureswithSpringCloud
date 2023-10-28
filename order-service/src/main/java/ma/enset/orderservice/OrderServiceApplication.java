@@ -54,6 +54,7 @@ public class OrderServiceApplication  {
 					if (Math.random()>0.30) {
 						ProductItem productItem = ProductItem.builder()
 								.order(savedOder)
+								.name(products.get(i).getName())
 								.productId(products.get(i).getId())
 								.price(Math.random() * 1000)
 								.quantity(random.nextInt(11))
